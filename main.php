@@ -12,16 +12,20 @@ $questions = [
 
 $reponses = [1, 2, 3, 1, 3];
 $score = 0;
-
+function affichageScore ($score)
+{
+    echo"###################################################\n\n###################################################
+Score : $score
+###################################################\n\n";
+return;
+}
 $NB_QUESTIONS = count($questions);
 
 
 for ($i = 0; $i < $NB_QUESTIONS; $i++) {
     echo "###################################################
-######## Qui veux gagner des millions ?! ##########
-###################################################\n\n###################################################
-Score : $score
-###################################################\n";
+######## Qui veux gagner des millions ?! ##########\n";
+affichageScore($score);
 
     echo $questions[$i] . "\n";
     $reponse_utilisateur = trim(fgets(STDIN));
