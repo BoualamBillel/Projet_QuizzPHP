@@ -15,7 +15,14 @@ $score = 0;
 
 $NB_QUESTIONS = count($questions);
 
+
 for ($i = 0; $i < $NB_QUESTIONS; $i++) {
+    echo "###################################################
+######## Qui veux gagner des millions ?! ##########
+###################################################\n\n###################################################
+Score : $score
+###################################################\n";
+
     echo $questions[$i] . "\n";
     $reponse_utilisateur = trim(fgets(STDIN));
     if ($reponse_utilisateur == $reponses[$i]) {
