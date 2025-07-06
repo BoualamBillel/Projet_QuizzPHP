@@ -12,23 +12,40 @@ $questions = [
 
 $reponses = [1, 2, 3, 1, 3];
 $score = 0;
-function affichageScore ($score)
+$score_maximum = 50;
+$NB_QUESTIONS = count($questions);
+function affichageScore($score)
 {
-    echo"###################################################\n\n###################################################
+    echo "###################################################\n\n###################################################
 Score : $score
 ###################################################\n\n";
-return;
+    return;
 }
-$NB_QUESTIONS = count($questions);
+
+function demanderChiffre($message)
+{
+    do {
+        echo $message;
+        $reponse = trim(fgets(STDIN));
+
+
+        if (ctype_digit($reponse)) {
+            return $reponse;
+        } else {
+            echo "Les réponses ne peuvent etre que des chiffres !\n";
+        }
+    } while (true);
+}
 
 
 for ($i = 0; $i < $NB_QUESTIONS; $i++) {
+    
     echo "###################################################
 ######## Qui veux gagner des millions ?! ##########\n";
-affichageScore($score);
+    affichageScore($score);
 
     echo $questions[$i] . "\n";
-    $reponse_utilisateur = trim(fgets(STDIN));
+    $reponse_utilisateur = demanderChiffre("Entrer votre réponse : ");
     if ($reponse_utilisateur == $reponses[$i]) {
         echo "Bravo ! Bonne réponse !\nVotre score augmente de 10 points ! \n";
         $score += 10;
@@ -38,5 +55,14 @@ affichageScore($score);
 
     }
 
-    echo "Votre score actuel est : $score\n";
+    echo "Votre score actuel est : $score points !\n\n";
+
 }
+
+$pourcentage_reponse = ($score / ($NB_QUESTIONS * 10)) * 100;
+if ($pourcentage_reponse > 50) {
+    echo "BRAVO !!!! Vous etes l'heureux gagnant de Qui veux gagner des millions !!!!!!!!!\n";
+} else {
+    echo "GAME OVER ! Vous avez échouer !\n";
+}
+echo "Votre pourcentage de bonne réponse est de : $pourcentage_reponse% !\n";
