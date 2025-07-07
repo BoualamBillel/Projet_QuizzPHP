@@ -58,11 +58,12 @@ for ($i = 0; $i < $NB_QUESTIONS; $i++) {
     echo "Votre score actuel est : $score points !\n\n";
 
 }
-
+affichageScore($score);
 $pourcentage_reponse = ($score / ($NB_QUESTIONS * 10)) * 100;
 if ($pourcentage_reponse > 50) {
     echo "BRAVO !!!! Vous etes l'heureux gagnant de Qui veux gagner des millions !!!!!!!!!\n";
 } else {
     echo "GAME OVER ! Vous avez échouer !\n";
 }
+echo "Score Final : $score / $score_maximum\n";
 echo "Votre pourcentage de bonne réponse est de : $pourcentage_reponse% !\n";
