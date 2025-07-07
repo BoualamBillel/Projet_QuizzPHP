@@ -14,6 +14,9 @@ $reponses = [1, 2, 3, 1, 3];
 $score = 0;
 $score_maximum = 50;
 $NB_QUESTIONS = count($questions);
+
+
+
 function affichageScore($score)
 {
     echo "###################################################\n\n###################################################
@@ -37,11 +40,18 @@ function demanderChiffre($message)
     } while (true);
 }
 
+    echo "###################################################
+######## Qui veux gagner des millions ?! ##########\n\n";
+
+if (file_exists("scoreQuizz.txt")) {
+    echo "================ SCORE PRÉCÉDENT ==================\n";
+    echo file_get_contents("scoreQuizz.txt");
+    echo "===================================================\n\n";
+}
 
 for ($i = 0; $i < $NB_QUESTIONS; $i++) {
     
-    echo "###################################################
-######## Qui veux gagner des millions ?! ##########\n";
+
     affichageScore($score);
 
     echo $questions[$i] . "\n";
@@ -67,3 +77,8 @@ if ($pourcentage_reponse > 50) {
 }
 echo "Score Final : $score / $score_maximum\n";
 echo "Votre pourcentage de bonne réponse est de : $pourcentage_reponse% !\n";
+
+$fichier = fopen("scoreQuizz.txt","w+");
+fwrite($fichier, "Score Précedent : $score / $score_maximum\n");
+fwrite($fichier,"Pourcentage de bonne réponse : $pourcentage_reponse %\n");
+fclose($fichier);
